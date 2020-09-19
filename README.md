@@ -1,16 +1,5 @@
 # PhArt – The Photo Art App
 
-## Hardware
-
-1. Raspberry PI (min b+)
-2. 3 9g servos
-3. 3d printer with filament
-4. Wires
-5. A pen
-6. 3 * 3.3v LED
-7. 3 * 200ohm resitors
-8. RaspberryPI camera module
-
 ## Process
 
 When you have finished assembling the hardware, you can start the machine, and if everything is in order, the following will happen:
@@ -30,7 +19,22 @@ When you have finished assembling the hardware, you can start the machine, and i
    2. Draw it with the plotter
    3. Solid GREEN light
 
-## Installation
+---
+
+## Hardware assembling
+
+### Hardware requirements
+
+1. Raspberry PI (minimum rpi B+)
+2. 3 9g servos
+3. 3d printer with filament
+4. Wires
+5. A pen
+6. 3 \* colourful 3.3v LEDs with 200ohm resitors for the status
+7. 4 \* bright 3.3v LEDs with 50ohm resitors for the flash light
+8. RaspberryPI camera module
+
+## Software Installation
 
 ### Raspberry PI with Docker
 
