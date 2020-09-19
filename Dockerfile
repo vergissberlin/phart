@@ -1,10 +1,11 @@
 FROM 2000cubits/raspbian-python
 
 RUN apt-get update
-RUN apt-get upgrade 
+# RUN apt-get upgrade 
 RUN apt-get install -y \
     git \
     pigpiod \
+    python3-pip \
     libatlas3-base \ 
     libgfortran5 \
     libatlas3-base \
@@ -23,6 +24,7 @@ RUN apt-get install -y \
 RUN pip3 install \
     numpy \
     opencv-python==3.4.4.19 \
+    pibrella \
     pigpio \
     pillow \
     pytest \
