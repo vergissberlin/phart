@@ -1,8 +1,7 @@
 FROM 2000cubits/raspbian-python
 
-RUN apt-get update
-# RUN apt-get upgrade 
-RUN apt-get install -y \
+RUN apt update
+RUN apt install -y \
     git \
     pigpiod \
     python3-pip \
@@ -22,9 +21,10 @@ RUN apt-get install -y \
     rm -rf /var/lib/apt/lists/*
 
 RUN pip3 install \
+    gpiozero \
     numpy \
     opencv-python==3.4.4.19 \
-    pibrella \
+    picamera \
     pigpio \
     pillow \
     pytest \
@@ -33,6 +33,6 @@ RUN pip3 install \
 
 WORKDIR /app
 
-RUN git clone https://github.com/MakeMagazinDE/BrachioGraph.git .
+COPY ./app .
 
-CMD ["bash"]
+ENTRYPOINT  ["phyton3", "init.py"]
