@@ -1,0 +1,11 @@
+version: '3.5'
+
+services:
+  phart:
+    image: vergissberlin/phart
+    container_name: phart
+    privileged: true
+    env_file: .env
+    volumes:
+      - ./data/images:/app/images
+    restart: unless-stopped

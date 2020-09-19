@@ -13,12 +13,12 @@ RUN apt-get install -y \
     libgstreamer1.0-dev \
     libgtk-3-0 \
     libilmbase-dev \ 
-    libjasper-dev &&\
+    libjasper-dev \
     libopenexr-dev \
     libswscale-dev \
     libqt4-test \
     libqtgui4 \
-    rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/*
 
 RUN pip3 install \
     gpiozero \
@@ -35,4 +35,4 @@ WORKDIR /app
 
 COPY ./app .
 
-CMD  ["python3", "init.py"]
+CMD  ["python3", "phart.py"]

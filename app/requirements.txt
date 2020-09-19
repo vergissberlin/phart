@@ -1,0 +1,9 @@
+gpiozero
+numpy
+opencv-python==3.4.4.19
+picamera
+pigpio
+pillow
+pytest
+readchar
+tqdm
