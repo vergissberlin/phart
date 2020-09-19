@@ -53,10 +53,13 @@ docker exec phart bash
 
 If you like to make changes, feel free to do it. Just checkout the repository and build your own Docker image.
 
-### Build
+### Build & push
+
+Beware, you have be on an ARM system, or using a [ARM simulation](https://www.stereolabs.com/docs/docker/building-arm-container-on-x86/) to build the Docker image.
 
 ```shell
 docker build -t vergissberlin/phart .
+docker push vergissberlin/phart
 ```
 
 ---

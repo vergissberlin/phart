@@ -1,23 +1,23 @@
 FROM 2000cubits/raspbian-python
 
-RUN apt update
-RUN apt install -y \
+RUN apt-get update
+RUN apt-get install -y \
     git \
     pigpiod \
-    python3-pip \
+    python3-pip
+RUN apt-get install -y \
     libatlas3-base \ 
-    libgfortran5 \
-    libatlas3-base \
-    libilmbase-dev \ 
-    libopenexr-dev \
-    libgstreamer1.0-dev \
     libavcodec-dev \
     libavformat-dev \
-    libswscale-dev \
-    libqtgui4 \
-    libqt4-test \
+    libgfortran5 \
+    libgstreamer1.0-dev \
     libgtk-3-0 \
+    libilmbase-dev \ 
     libjasper-dev &&\
+    libopenexr-dev \
+    libswscale-dev \
+    libqt4-test \
+    libqtgui4 \
     rm -rf /var/lib/apt/lists/*
 
 RUN pip3 install \
@@ -35,4 +35,4 @@ WORKDIR /app
 
 COPY ./app .
 
-ENTRYPOINT  ["phyton3", "init.py"]
+CMD  ["python3", "init.py"]
