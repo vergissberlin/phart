@@ -1,8 +1,8 @@
 FROM 2000cubits/raspbian-python
 
-RUN apt-get update &&\
-    apt-get upgrade &&\
-    apt-get install -y \
+RUN apt-get update
+RUN apt-get upgrade 
+RUN apt-get install -y \
     git \
     pigpiod \
     libatlas3-base \ 
