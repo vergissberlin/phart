@@ -1,5 +1,7 @@
 # **PhArt** – The **Ph**oto to **Art** App
 
+[![Build Status](https://travis-ci.com/vergissberlin/phart.svg?branch=master)](https://travis-ci.com/vergissberlin/phart)
+
 ## Process
 
 When you have finished assembling the hardware, you can start the machine, and if everything is in order, the following will happen:
