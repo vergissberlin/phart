@@ -35,6 +35,6 @@ RUN pip3 install \
 WORKDIR /app
 
 COPY ./app .
+COPY ./rootfs /
 
-#CMD bash -c "pigpiod && bash"
 CMD  ["python3", "phart.py"]
