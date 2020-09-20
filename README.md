@@ -1,4 +1,4 @@
-# PhArt – The Photo Art App
+# **PhArt** – The **Ph**oto to **Art** App
 
 ## Process
 
@@ -26,13 +26,15 @@ When you have finished assembling the hardware, you can start the machine, and i
 ### Hardware requirements
 
 1. Raspberry PI (minimum rpi B+)
-2. 3 9g servos
-3. 3d printer with filament
-4. Wires
-5. A pen
-6. 3 \* colourful 3.3v LEDs with 200ohm resitors for the status
-7. 4 \* bright 3.3v LEDs with 50ohm resitors for the flash light
-8. RaspberryPI camera module
+2. SD card (minimum 8GB capacity)
+3. 3 9g servos
+4. 3d printer with filament
+5. Wires
+6. A pen
+7. 3 \* colourful 3.3v LEDs with 200ohm resitors for the status
+8. 4 \* bright 3.3v LEDs with 50ohm resitors for the flash light
+9. RaspberryPI camera module
+10. Micro USB power supply
 
 ## Software Installation
 
@@ -73,27 +75,37 @@ You can see a test application in your browser? Than you`re good to go, if not g
 docker run -d --restart unless-stopped --privileged --name phart vergissberlin/phart
 ```
 
+If you like to have a bin more fancy, you can use _docker-compose_ too:
+
+```yaml
+version: '3.5'
+
+services:
+  phart:
+    image: vergissberlin/phart
+    container_name: phart
+    privileged: true
+    environment:
+      - PIN_LIGHT_GREEN=4
+      - PIN_LIGHT_YELLOW=17
+      - PIN_LIGHT_RED=21
+      - PIN_INPUT_A=9
+      - PIN_INPUT_B=7
+      - PIN_INPUT_C=8
+      - PIN_INPUT_D=10
+      - PIN_OUTPUT_A=22
+      - PIN_OUTPUT_B=23
+      - PIN_OUTPUT_C=24
+      - PIN_OUTPUT_D=25
+      - PIN_BUTTON=11
+      - PIN_BUZZER=18
+    volumes:
+      - ./data/images:/app/images
+    restart: unless-stopped
+```
+
 #### Debug
 
 ```shell
 docker exec phart bash
 ```
-
-## Contribute
-
-If you like to make changes, feel free to do it. Just checkout the repository and build your own Docker image.
-
-### Build & push
-
-Beware, you have be on an ARM system, or using a [ARM simulation](https://www.stereolabs.com/docs/docker/building-arm-container-on-x86/) to build the Docker image.
-
-```shell
-docker build -t vergissberlin/phart .
-docker push vergissberlin/phart
-```
-
----
-
-apt install -y git python3 pigpiod libatlas3-base libgfortran5 libilmbase-dev libopenexr-dev libgstreamer1.0-dev libavcodec-dev libavformat-dev libswscale-dev libqtgui4 libqt4-test libgtk-3-0 libjasper-dev
-
-pip3 install numpy opencv-python==3.4.11.41 pigpio pillow pytest readchar tqdm
