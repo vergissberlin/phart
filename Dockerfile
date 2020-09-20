@@ -1,11 +1,12 @@
 FROM 2000cubits/raspbian-python
 
-RUN apt-get update
-RUN apt-get install -y \
+RUN apt-get update && \
+    apt-get install -yq --no-install-recommends \
     git \
     pigpiod \
     python3-pip
-RUN apt-get install -y \
+
+RUN apt-get install -yq --no-install-recommends \
     libatlas3-base \ 
     libavcodec-dev \
     libavformat-dev \
@@ -34,5 +35,7 @@ RUN pip3 install \
 WORKDIR /app
 
 COPY ./app .
+
+ENTRYPOINT [ "pigpiod" ]
 
 CMD  ["python3", "phart.py"]
