@@ -4,6 +4,7 @@
 !/.env
 !/.gitignore
 !/.gitmodules
+!/CONTRIBUTE.md
 !/docker-compose.yml
 !/Dockerfile
 !/LICENSE

@@ -1,19 +1,9 @@
+import config
+import convert
+import draw
+import photo
 from gpiozero import Button
 from signal import pause
-
-
-__version__ = '0.0.1'
-
-def say_hello():
-    print("Hello!")
-
-
-button = Button(11)
-
-button.when_pressed = say_hello
-
-pause()
-
 
 # 1. **Photo**
 # 1.1 Pulse() RED light
@@ -29,3 +19,21 @@ pause()
 # 3.1 Pulse() GREEN light
 # 3.2 Draw it with the plotter
 # 3.3 Solid GREEN light
+
+
+# Read the configuration
+exec(open('config.py').read())
+
+
+# Project version number
+__version__ = '0.0.1'
+
+
+def say_hello():
+    print("Hello!")
+
+
+button = Button(PIN_BUTTON)
+button.when_pressed = say_hello
+
+pause()

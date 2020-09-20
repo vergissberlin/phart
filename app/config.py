@@ -1,17 +1,4 @@
 from os import environ
-from brachiograph import BrachioGraph
-
-bg = BrachioGraph(
-    inner_arm=os.environ.get('ARM_INNER') or 8,  # Upper arm length cm
-    outer_arm=os.environ.get('ARM_OUTER') or 8,  # Underarm length cm
-    bounds=(-8, 4, 4, 13),                       # Coordinates drawing area
-    servo_1_degree_ms=-10,                       # Movement shoulder servo
-    servo_2_degree_ms=10,                        # Movement elbow servo
-    servo_1_centre=1500,                         # Middle position shoulder
-    servo_2_centre=1500,                         # Middle position elbow
-    pw_down=os.environ.get('PW_DOWN') or 1850,   # Position pin bottom
-    pw_up=os.environ.get('PW_UP') or 1500,       # Position pin lifted
-)
 
 # Lights
 PIN_LIGHT_GREEN = os.environ.get('PIN_LIGHT_GREEN') or 4
