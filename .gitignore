@@ -4,6 +4,7 @@
 !/.env
 !/.gitignore
 !/.gitmodules
+!/.travis.yml
 !/CONTRIBUTE.md
 !/docker-compose.yml
 !/Dockerfile

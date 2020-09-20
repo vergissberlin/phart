@@ -36,6 +36,5 @@ WORKDIR /app
 
 COPY ./app .
 
-ENTRYPOINT [ "pigpiod" ]
-
+#CMD bash -c "pigpiod && bash"
 CMD  ["python3", "phart.py"]

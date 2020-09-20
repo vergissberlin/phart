@@ -1,9 +1,12 @@
-import config
-import convert
-import draw
-import photo
-from gpiozero import Button
+from os import system
 from signal import pause
+from gpiozero import Button
+import photo
+import draw
+import convert
+import config
+system("pigpiod")
+
 
 # 1. **Photo**
 # 1.1 Pulse() RED light
