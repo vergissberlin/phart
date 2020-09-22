@@ -23,14 +23,13 @@ services:
       - PIN_OUTPUT_D=25
       - PIN_BUTTON=11
       - PIN_BUZZER=18
+      - PIGPIO_ADDR=pigpiod
     volumes:
       - ./data/images:/app/images
     restart: unless-stopped
 
   pigpiod:
-    image: zinen2/alpine-pigpiod:arm32v6
+    image: zinen2/alpine-pigpiod:arm32v7 # RPI2: zinen2/alpine-pigpiod:arm32v6
     container_name: phart_pigpiod
-    ports:
-      - 8888:8888
     privileged: true
     restart: unless-stopped
