@@ -1,10 +1,14 @@
 version: '3.5'
 
 services:
-  phart:
+  app:
     image: vergissberlin/phart
-    container_name: phart
-    privileged: true
+    container_name: phart_app
+    privileged: false
+    depends_on:
+      - pigpiod
+    links:
+      - pigpiod:pigpiod
     environment:
       - PIN_LIGHT_GREEN=4
       - PIN_LIGHT_YELLOW=17
@@ -21,4 +25,12 @@ services:
       - PIN_BUZZER=18
     volumes:
       - ./data/images:/app/images
+    restart: unless-stopped
+
+  pigpiod:
+    image: zinen2/alpine-pigpiod:arm32v6
+    container_name: phart_pigpiod
+    ports:
+      - 8888:8888
+    privileged: true
     restart: unless-stopped

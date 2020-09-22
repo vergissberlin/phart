@@ -1,5 +1,0 @@
-[ -d /etc/boot.d ] && run-parts /etc/boot.d
-
-pigpiod
-
-exit 0

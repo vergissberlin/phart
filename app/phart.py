@@ -5,6 +5,8 @@ import draw
 import convert
 import config
 
+from os import system
+system("pigpiod")
 
 # 1. **Photo**
 # 1.1 Pulse() RED light
@@ -30,11 +32,16 @@ exec(open('config.py').read())
 __version__ = '0.0.1'
 
 
-def say_hello():
-    print("Hello!")
+class PhArt:
+    def __init__(self, ):
+        print("Welcom to PhArt! pfffff")
+
+    @staticmethod
+    def say_hello():
+        print("Hello!")
 
 
 button = Button(PIN_BUTTON)
-button.when_pressed = say_hello
+button.when_pressed = PhArt.say_hello()
 
 pause()

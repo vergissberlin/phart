@@ -1,9 +1,10 @@
 FROM 2000cubits/raspbian-python
 
-RUN apt-get update && \
-    apt-get install -yq --no-install-recommends \
+ENV LD_PRELOAD=/usr/lib/arm-linux-gnueabihf/libatomic.so.1.2.0
+
+RUN apt-get update 
+RUN apt-get install -yq --no-install-recommends \
     git \
-    pigpiod \
     python3-pip
 
 RUN apt-get install -yq --no-install-recommends \
@@ -35,6 +36,5 @@ RUN pip3 install \
 WORKDIR /app
 
 COPY ./app .
-COPY ./rootfs /
 
-CMD  ["python3", "phart.py"]
+CMD  ["python3", "test.py"]
