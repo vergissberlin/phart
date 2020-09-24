@@ -1,13 +1,17 @@
-FROM 2000cubits/raspbian-python
+FROM balenalib/rpi-raspbian:latest 
+# FROM balenalib/raspberrypi3-python:3.8-build
+# balenalib/raspberrypi3-python:3.7
+# balenalib/raspberry-pi-python:3.7
+# balenalib/raspberry-pi2-python:3.7
+# balenalib/rpi-raspbian (rpi base image)
+# https://stackoverflow.com/questions/54842833/access-raspistill-pi-camera-inside-a-docker-container
 
-ENV LD_PRELOAD=/usr/lib/arm-linux-gnueabihf/libatomic.so.1.2.0
-
-RUN apt-get update 
-RUN apt-get install -yq --no-install-recommends \
+RUN install_packages \
     git \
+    python3 \
     python3-pip
 
-RUN apt-get install -yq --no-install-recommends \
+RUN install_packages \
     libatlas3-base \ 
     libavcodec-dev \
     libavformat-dev \
@@ -19,22 +23,17 @@ RUN apt-get install -yq --no-install-recommends \
     libopenexr-dev \
     libswscale-dev \
     libqt4-test \
-    libqtgui4 \
-    && rm -rf /var/lib/apt/lists/*
-
-RUN pip3 install \
-    gpiozero \
-    numpy \
-    opencv-python==3.4.4.19 \
-    picamera \
-    pigpio \
-    pillow \
-    pytest \
-    readchar \
-    tqdm
+    libqtgui4
 
 WORKDIR /app
 
-COPY ./app .
+COPY ./requirements.txt requirements.txt
+
+RUN pip3 install -r requirements.txt
+
+ENV LD_PRELOAD=/usr/lib/arm-linux-gnueabihf/libatomic.so.1.2.0 \
+    UDEV=1
+
+COPY ./app/ .
 
 CMD  ["python3", "test.py"]

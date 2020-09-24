@@ -1,8 +1,8 @@
 from signal import pause
 from gpiozero import Button
-import photo
-import draw
-import convert
+from photo import Photo
+from draw import Draw
+from convert import Convert
 import config
 
 from os import system
@@ -33,8 +33,17 @@ __version__ = '0.0.1'
 
 
 class PhArt:
-    def __init__(self, ):
-        print("Welcom to PhArt! pfffff")
+    def __init__(self):
+        print("Welcome to PhArt! pfffff. PIN_LIGHT_RED: %s" % PIN_LIGHT_RED)
+        self.started = false
+
+    def start_process(self):
+        if self.started != = true:
+            self.started = true
+            image_name = Photo(PIN_OUTPUT_A, PIN_LIGHT_RED)
+            image = Convert(PIN_LIGHT_YELLOW, image_name)
+            draw = Draw(PIN_LIGHT_GREEN, image_name)
+            self.started = false
 
     @staticmethod
     def say_hello():
@@ -43,5 +52,6 @@ class PhArt:
 
 button = Button(PIN_BUTTON)
 button.when_pressed = PhArt.say_hello()
+#phart = PhArt()
 
 pause()

@@ -16,7 +16,6 @@ class Convert:
         self.led_status = PWMLED(pin_led_status)
         self.image_name = image_name
         self._render(self)
-
    
     def _render(self):
         self.led_status.pulse(.1)

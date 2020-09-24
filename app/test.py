@@ -5,7 +5,8 @@ import logging
 # from os import system
 # system("pigpiod")
 
-logging.debug("Welcome to Python on Docker")
+logging.debug("Welcome to Python on Docker (Logger)")
+print("Welcome to Python on Docker (print)")
 
 led = LED(4)
 

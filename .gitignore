@@ -10,4 +10,5 @@
 !/Dockerfile
 !/LICENSE
 !/README.md
+!/requirements.txt
 !/rootfs
