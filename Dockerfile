@@ -9,7 +9,8 @@ FROM balenalib/rpi-raspbian:latest
 RUN install_packages \
     git \
     python3 \
-    python3-pip
+    python3-pip \
+    raspi-config
 
 RUN install_packages \
     libatlas3-base \ 
@@ -21,6 +22,7 @@ RUN install_packages \
     libilmbase-dev \ 
     libjasper-dev \
     libopenexr-dev \
+    libraspberrypi-bin \
     libswscale-dev \
     libqt4-test \
     libqtgui4
@@ -31,9 +33,12 @@ COPY ./requirements.txt requirements.txt
 
 RUN pip3 install -r requirements.txt
 
-ENV LD_PRELOAD=/usr/lib/arm-linux-gnueabihf/libatomic.so.1.2.0 \
+# LD_PRELOAD=/usr/lib/arm-linux-gnueabihf/libatomic.so.1.2.0 \
+ENV LD_LIBRARY_PATH=/opt/vc/lib \
     UDEV=1
 
-COPY ./app/ .
+ADD ./app/ .
+ADD /rootfs/boot/config.txt /boot/config.txt
+ADD /rootfs/etc/udev/rules.d/99-camera.rules /etc/udev/rules.d/99-camera.rules
 
 CMD  ["python3", "test.py"]

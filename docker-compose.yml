@@ -2,13 +2,15 @@ version: '3.5'
 
 services:
   app:
-    image: vergissberlin/phart
+    image: vergissberlin/phart:balena
     container_name: phart_app
-    privileged: false
+    privileged: true
     depends_on:
       - pigpiod
     links:
       - pigpiod:pigpiod
+    devices:
+     - "/dev/vchiq:/dev/vchiq"
     environment:
       - PIN_LIGHT_GREEN=4
       - PIN_LIGHT_YELLOW=17
@@ -24,8 +26,10 @@ services:
       - PIN_BUTTON=11
       - PIN_BUZZER=18
       - PIGPIO_ADDR=pigpiod
+      - UDEV=true
     volumes:
       - ./data/images:/app/images
+      - /opt/vc:/opt/vc
     restart: unless-stopped
 
   pigpiod:
