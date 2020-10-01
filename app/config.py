@@ -1,4 +1,4 @@
-from os import environ
+import os
 
 # Lights
 PIN_LIGHT_GREEN = os.environ.get('PIN_LIGHT_GREEN') or 4
