@@ -12,3 +12,5 @@
 !/README.md
 !/requirements.txt
 !/rootfs
+
+/app/__pycache__
