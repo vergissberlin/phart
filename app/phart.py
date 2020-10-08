@@ -1,12 +1,15 @@
 from signal import pause
 from gpiozero import Button
 from photo import Photo
-from draw import Draw
-from convert import Convert
-import config
+#from draw import Draw
+#from convert import Convert
 
-from os import system
-system("pigpiod")
+
+# Read the configuration
+exec(open('config.py').read())
+
+#from os import system
+# system("pigpiod")
 
 # 1. **Photo**
 # 1.1 Pulse() RED light
@@ -33,25 +36,32 @@ __version__ = '0.0.1'
 
 
 class PhArt:
-    def __init__(self):
-        print("Welcome to PhArt! pfffff. PIN_LIGHT_RED: %s" % PIN_LIGHT_RED)
-        self.started = false
 
-    def start_process(self):
-        if self.started != = true:
-            self.started = true
-            image_name = Photo(PIN_OUTPUT_A, PIN_LIGHT_RED)
-            image = Convert(PIN_LIGHT_YELLOW, image_name)
-            draw = Draw(PIN_LIGHT_GREEN, image_name)
-            self.started = false
+    def __init__(self, started=False):
+        print("Welcome to PhArt!")
+        self._started = started
+
+    def progress(self):
+        if self._started != True:
+            self._started = True
+            taskPhoto = Photo(PIN_LIGHT_FLASH, PIN_LIGHT_RED)
+            print(taskPhoto.getFileName)
+            #image = Convert(PIN_LIGHT_YELLOW, image_name)
+            #draw = Draw(PIN_LIGHT_GREEN, image_name)
+            self._started = False
 
     @staticmethod
     def say_hello():
         print("Hello!")
 
 
-button = Button(PIN_BUTTON)
-button.when_pressed = PhArt.say_hello()
+taskPhart = PhArt()
+taskPhart.say_hello()
+taskPhart.progress()
+
+
+#button = Button(PIN_BUTTON)
+#button.when_pressed = PhArt.say_hello()
 #phart = PhArt()
 
-pause()
+# pause()

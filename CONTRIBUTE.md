@@ -18,6 +18,8 @@ docker push vergissberlin/phart
 sudo apt update
 sudo apt install -y git fail2ban python3 python3-pip pigpiod libatlas3-base libgfortran5 libilmbase-dev libopenexr-dev libgstreamer1.0-dev libavcodec-dev libavformat-dev libswscale-dev libqtgui4 libqt4-test libgtk-3-0 libjasper-dev
 
+git submodule init
+pip3 install -r requirements.txt
 pip3 install numpy opencv-python==3.4.11.41 pigpio pillow pytest readchar tqdm
 ````
 
