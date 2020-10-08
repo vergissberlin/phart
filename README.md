@@ -38,6 +38,8 @@ When you have finished assembling the hardware, you can start the machine, and i
 9. RaspberryPI camera module
 10. Micro USB power supply
 
+> pibrella shield pinout https://de.pinout.xyz/pinout/pibrella
+
 ## Software Installation
 
 ### Raspberry PI with Docker
