@@ -34,7 +34,7 @@ light_green = LED(PIN_LIGHT_GREEN)
 
 # 0. Init progress
 def progress():
-    print(bcolors.HEADER + '\n:::: PhArt – Start progress ::::\n' + bcolors.ENDC)
+    print(msg.HEADER + msg.BOLD + '\n:::: PhArt – Start progress ::::\n' + msg.ENDC)
     # 1. Photo
     _preflash()
     file_name = _photo()
@@ -66,11 +66,12 @@ def _preflash():
 # 1.5 Solid RED light
 
 
-class bcolors:
+class msg:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
     OKCYAN = '\033[96m'
     OKGREEN = '\033[92m'
+    SUCCESS = '✅ ' + OKGREEN
     WARNING = '\033[93m'
     FAIL = '\033[91m'
     ENDC = '\033[0m'
@@ -85,7 +86,8 @@ def _photo():
     file_path = './images/%s.jpg' % ts
     camera.capture(file_path)
     sleep(1)
-    print("✅ 1. Photo created \033[3m\033[94m%s\033[0m" % file_path)
+    print(msg.SUCCESS +
+          "1. Photo created\033[0m \033[3m\033[94m%s\033[0m" % file_path)
     light_flash.off()
     light_red.on()
     return ts
