@@ -1,6 +1,6 @@
 bpytop
 gpiozero==1.5.1
-numpy==1.19.2
+numpy==1.22.0rc1
 opencv-python==3.4.4.19
 picamera
 pigpio
